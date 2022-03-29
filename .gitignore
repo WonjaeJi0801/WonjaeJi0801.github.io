@@ -1,5 +1,7 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
+.gitignore
+
 # Vim
 *~
 *.sw[p_]
@@ -29,3 +31,6 @@ codekit-config.json
 .sass-cache
 _asset_bundler_cache
 _site
+
+# templates
+_posts_templates
