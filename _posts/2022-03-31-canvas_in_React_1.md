@@ -1,5 +1,5 @@
 ---
-title: "React 에서 <canvas> 로 그리기 1"
+title: "React에서 canvas로 그리기 1"
 excerpt: "DOM, useRef, useEffect, getContext ..."
 
 categories:
@@ -88,6 +88,42 @@ function DrawSomething({ radius }) {
    `Cannot read properties of null (reading 'getContext')`
    <br/>
 3. 동적인 값(React state) radius을 useEffect 두 번째 인자에 넣어주면, 동적으로 변하는 그래픽을 그릴 수 있습니다.
+
+#### 정리
+
+```js
+function drawCircle(ctx, coord, r, color) {
+  ctx.fillStyle = color;
+  ctx.beginPath();
+  ctx.arc(coord.x, coord.y, r, 0, 2 * Math.PI);
+  ctx.fill();
+  ctx.stroke();
+}
+
+export default function Canvas({ radius }) {
+  const canvasRef = useRef(null);
+
+  function drawMain() {
+    const canvas = canvasRef.current;
+    const ctx = canvas.getContext("2d");
+    canvas.width = window.innerWidth * 0.7;
+    canvas.height = window.innerHeight * 0.7;
+    drawCircle(ctx, { x: 500, y: 150 }, radius, "skyblue");
+    drawCircle(ctx, { x: 200, y: 350 }, radius, "lightyellow");
+    drawCircle(ctx, { x: 500, y: 450 }, radius, "transparent");
+  }
+
+  useEffect(() => {
+    drawMain();
+  }, [radius]);
+
+  return (
+    <div className="canvas">
+      <canvas ref={canvasRef}></canvas>
+    </div>
+  );
+}
+```
 
 <br/>
 <br/>
