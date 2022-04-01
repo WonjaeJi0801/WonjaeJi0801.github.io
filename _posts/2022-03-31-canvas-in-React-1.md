@@ -1,7 +1,6 @@
 ---
 published: true
 title: "React에서 canvas로 그리기 1"
-excerpt: "DOM, useRef, useEffect, getContext ..."
 
 categories:
   # pick one
