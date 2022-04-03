@@ -12,10 +12,10 @@ toc: true
 toc_sticky: true
 
 date: 2022-03-31
-last_modified_at: 2022-03-31
+last_modified_at: 2022-04-04
 ---
 
-# [React] canvas 태그 사용법
+# [React] canvas로 그리기 1
 
 #### canvas 태그
 
