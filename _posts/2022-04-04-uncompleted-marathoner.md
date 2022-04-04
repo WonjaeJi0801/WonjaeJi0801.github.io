@@ -49,7 +49,7 @@ last_modified_at: 2022-04-04
 
 #### 풀이
 
-`해시` 문제, 처음에는 `completion` 배열 앞에서부터 요소를 하나씩 제거하면서, `participant` 배열에서 같은 값 인덱스를 찾아(`indexOf`) 0으로 할당. `while` 문 끝나고 `participant` 배열에서 0이 아닌 것 리턴하는 방식
+`해시` 문제, 처음 시도한 naive solution에서는 `completion` 배열 앞에서부터 요소를 하나씩 제거하면서, `participant` 배열에서 같은 값 인덱스를 찾아(`indexOf`) 0으로 할당. `while` 문 끝나고 `participant` 배열에서 0이 아닌 것 리턴하는 방식
 
 ```js
 function solution(participant, completion) {
