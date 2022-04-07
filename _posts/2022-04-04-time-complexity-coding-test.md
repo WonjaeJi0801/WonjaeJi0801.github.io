@@ -221,20 +221,35 @@ console.log(userDescriptions);
 
 ##### 3. filter() - O(N)
 
+주어진 조건에 참을 만족하는 요소만 가진 새 배열 반환
+
 ```js
-const names = ["Luis", "John", "Jose"];
-names.push("Aaron");
-console.log(names); // (4) ["Luis", "John", "Jose", "Aaron"]
+const users = [
+  { name: "Luis", admin: true },
+  { name: "Jose", admin: true },
+  { name: "Aaron" },
+];
+const adminUsers = users.filter((item) => item.admin);
+console.log(adminUsers); // [{name: "Luis", admin: true},{name: "Jose", admin: true}]
 ```
 
 <br>
 
 ##### 4. reduce() - O(N)
 
+배열의 각 요소에 순서대로 reducer 함수 적용한 한 개의 결과값 반환
+
 ```js
-const names = ["Luis", "John", "Jose"];
-names.push("Aaron");
-console.log(names); // (4) ["Luis", "John", "Jose", "Aaron"]
+const users = [
+  { name: "Luis", age: 15 },
+  { name: "Jose", age: 18 },
+  { name: "Aaron", age: 40 },
+];
+
+const reducer = (accumulator, item) => accumulator + item.age;
+const totalAge = users.reduce(reducer, 0);
+const ageAverage = totalAge / users.length;
+console.log(`Total ${totalAge}, Average ${ageAverage}`); // Total 73, Average 24.333333333333332
 ```
 
 <br>
@@ -243,28 +258,32 @@ console.log(names); // (4) ["Luis", "John", "Jose", "Aaron"]
 
 ##### 1. some() - O(N)
 
+주어진 조건에 맞는 원소가 1개 이상일 경우 `true` 반환. 조건에 맞는 원소가 없거나 빈 배열일 경우 `false` 반환.
+
 ```js
-const names = ["Luis", "John", "Jose"];
-names.push("Aaron");
-console.log(names); // (4) ["Luis", "John", "Jose", "Aaron"]
+const users = [
+  { name: "Luis", admin: true },
+  { name: "Jose" },
+  { name: "Aaron" },
+];
+const adminExists = users.some((item) => item.admin);
+console.log(adminExists); // true
 ```
 
 <br>
 
 ##### 2. every() - O(N)
 
-```js
-const names = ["Luis", "John", "Jose"];
-names.push("Aaron");
-console.log(names); // (4) ["Luis", "John", "Jose", "Aaron"]
-```
-
-<br>
+주어진 조건에 모든 원소가 참일 경우에만 `true` 반환. 1개라도 조건에 맞지 않을 경우 `false` 반환.
 
 ```js
-function solution(exam, ple) {
-  return exam + ple;
-}
+const users = [
+  { name: "Luis", active: true },
+  { name: "Jose", active: true },
+  { name: "Aaron", active: false },
+];
+const isAllUsersActive = users.every((item) => item.active);
+console.log(isAllUsersActive); // false
 ```
 
 <br>
