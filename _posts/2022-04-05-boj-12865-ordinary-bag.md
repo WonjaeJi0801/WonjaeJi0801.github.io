@@ -3,7 +3,7 @@ published: true
 title: "[백준] 평범한 배낭"
 
 categories:
-  - Programmers
+  - BOJ
 tags:
   - [coding test]
 
@@ -11,7 +11,7 @@ toc: true
 toc_sticky: true
 
 date: 2022-04-05
-last_modified_at: 2022-04-05
+last_modified_at: 2022-04-06
 ---
 
 # [DP] 평범한 배낭
@@ -27,7 +27,7 @@ last_modified_at: 2022-04-05
 
 #### 입출력 예
 
-출력 :
+입력 :
 
 ```
 4 7
@@ -59,26 +59,33 @@ last_modified_at: 2022-04-05
   (이전 값, w만큼 담지못한 이전 값에 n번째 물건 담았을 때 가치 합) 중 큰 것
   `bag[n][k] = Math.max(bag[n-1][k], bag[n-1][k-w] + v)`
 
+  <br>
+
 ```js
-var fs = require("fs");
+let fs = require("fs");
+let input = fs.readFileSync("/dev/stdin").toString().split("\n");
+const N = Number(input[0].split(" ")[0]);
+const K = Number(input[0].split(" ")[1]);
+input = input.map((el) =>
+  el
+    .trim()
+    .split(" ")
+    .map((value) => Number(value))
+);
 
-var input = fs
-  .readFileSync("/dev/stdin")
-  .toString()
-  .trim()
-  .split("\n")
-  .map((el) => el.split(" "));
+const bag = Array.from(new Array(N + 1), () => new Array(K + 1).fill(0));
 
-const [N, K] = input.shift().map((el) => Number(el));
-const list = input.map((a) => a.map((e) => Number(e))).filter((c) => c[0] <= K);
-list.unshift(undefined);
+for (let j = 1; j <= K; j++) {
+  if (input[1][0] <= j) {
+    bag[1][j] = input[1][1];
+  } else {
+    bag[1][j] = 0;
+  }
+}
 
-let bag = new Array(N + 1).fill(0).map((el) => new Array(K + 1).fill(0));
-
-for (let i = 1; i <= N; i++) {
-  let [w, v] = list[i];
-
-  for (let j = 0; j <= K; j++) {
+for (let i = 2; i <= N; i++) {
+  for (let j = 1; j <= K; j++) {
+    let [w, v] = input[i];
     if (j < w) {
       bag[i][j] = bag[i - 1][j];
     } else {
