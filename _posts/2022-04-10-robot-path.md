@@ -5,7 +5,7 @@ title: "[Toy] 25_robotPath"
 categories:
   - Toy
 tags:
-  - [coding test]
+  - [coding test, toy]
 
 toc: true
 toc_sticky: true
