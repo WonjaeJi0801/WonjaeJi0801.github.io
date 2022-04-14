@@ -137,7 +137,7 @@ const uglyNumbers = function (n) {
     if (nextUglyNum === nextMultipleOf3) idx3++;
     if (nextUglyNum === nextMultipleOf5) idx5++;
   }
-  return uglyNumbers[n - 1];
+  return uglyNumbers[n-1];
 };
 ```
 
